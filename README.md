@@ -4,6 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+**Note: this repo include dark mode & i18n isa.**
+
 In the project directory, you can run:
 
 ### `npm start`

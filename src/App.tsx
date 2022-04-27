@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { ThemeProvider } from "styled-components";
+import "./App.css";
+import TranslateComponent from "./components/translate.component";
+import { darkTheme, GlobalStyle, lightTheme } from "./styles/theme";
+import { withTranslation } from "react-i18next";
 
-function App() {
+const App = () => {
+  const [theme, setTheme] = useState("light");
+  const toggleTheme = () => {
+    theme == "light" ? setTheme("dark") : setTheme("light");
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+    <ThemeProvider theme={theme == "light" ? lightTheme : darkTheme}>
+      <GlobalStyle />
+      <div className="App">
+        <p className="clickable" onClick={toggleTheme}>
+          change theme
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+        <TranslateComponent></TranslateComponent>
+      </div>
+    </ThemeProvider>
   );
-}
+};
 
-export default App;
+export default withTranslation()(App);
